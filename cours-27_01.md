@@ -39,6 +39,8 @@ int somme (int[] T){
 }
 ```
 
+\newpage
+
 ## Modélisation n°2 (variation sur thème)
 
 `s` = somme des valeurs du `k`-suffixe de `T`

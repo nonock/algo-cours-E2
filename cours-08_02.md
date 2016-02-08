@@ -27,8 +27,6 @@ De façon générale, `arg min` $f(x)$ est la plus petite valeur, a, telle que
 
 $f(a) = min f(x)$
 
-\newpage
-
 *On reprend le programme du cours précédent*
 
 ```java
@@ -44,6 +42,8 @@ void triSelection(int[] T){
   } // I(n) donc T[0:n] trié dans l'ordre croissant
 }
 ```
+
+\newpage
 
 Propriété de `I(a, k')` : a = `arg min T[k:k']`
 
@@ -71,8 +71,6 @@ int indiceMin(int[] T, int k, int n){ // retourne a = arg min T[k:n]
   }
 }
 ```
-
-\newpage
 
 ## Temps de calcul de l'appel `indiceMin(T, k, n)`
 

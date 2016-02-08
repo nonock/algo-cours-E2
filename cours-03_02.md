@@ -38,6 +38,8 @@ $T(n) = \alpha + n \beta + (n + 1) \gamma$
 
 $T(n) = (\alpha + \gamma) + n (\beta + \gamma) = A + Bn$
 
+\newpage
+
 # Efficacité d'un programme
 
 C'est la forme du temps de calcul dans le pire cas d'éxécution exprimé en
