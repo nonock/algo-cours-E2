@@ -56,10 +56,10 @@ int somme (int[] T){
 ```java
 int somme (int[] T){
   int n = T.length;
-  int k = 0, s = 0; // I(s, k)
-  while(k != n){    // I(s, k) et k != 0 => I(s + T[k - 1], k - 1)
+  int k = n, s = 0; // I(s, k)
+  while(k != 0){    // I(s, k) et k != 0 => I(s + T[k - 1], k - 1)
     s = s + T[k];   // I(s, k - 1)
-    k++;            // I(s, k)
+    k--;            // I(s, k)
   }
   return s;
 }
@@ -84,7 +84,7 @@ int somme(int[] T, int i, int j){
     int k = (i + j) / 2;
     int sg = somme(T, i, k);
     int sd = somme(T, k, j);
-    return sg - sd;
+    return sg + sd;
   }
 }
 ```

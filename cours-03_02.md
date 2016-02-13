@@ -26,8 +26,8 @@ L'initialisation est de temps constant $\alpha$.
 
 Pour la boucle while :
 
-* L'addition est une opération de temps constant
-* L'accès à un élément d'un tableau est également de temps constant
+* L'addition est une opération de temps constant			=> $\beta$
+* L'accès à un élément d'un tableau est également de temps constant	=> $\beta$
 * La vérification de `k != n` est de temps constant $\gamma$ et exécuté (n + 1)
 fois
 
@@ -56,7 +56,7 @@ int somme(int[] T, int i, int j){
     int k = (i + j) / 2;
     int sg = somme(T, i, k);
     int sd = somme(T, k, j);
-    return sg - sd;
+    return sg + sd;
   }
 }
 ```
