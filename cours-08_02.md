@@ -113,7 +113,7 @@ $T_{TS}(n) = \delta + n(A' + {{B} \over {2}}) + n^2 * {{B} \over {2}}$
 
 ## Trier `T[i:j]`
 
-1. "Installer" `T[i:k]` $\leq$ `T[k]` $<$ `T[K+1:n]`
+1. "Installer" `T[i:k]` $\leq$ `T[k]` $<$ `T[K+1:j]`
 
 2. Si `T[i:k]` est trié et `T[k + 1, j]` est trié. Alors `T[i:j]` est trié
 
