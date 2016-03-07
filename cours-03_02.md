@@ -67,7 +67,8 @@ On traite le cas `somme(T, 0, n)`
 * $T(n = 1) \rightarrow$ le programme s'éxecute en temps constant $\beta \neq
 \alpha$
 * $n > 1$ et $n = 2^p$ avec $p \geq 1$
-    * $\gamma$ est le temps constant de la division par 2 et du `return sg + sd;`
+    * $\gamma$ est le temps constant de la division par 2 et du 
+      `return sg + sd;`
     * $\delta = \alpha + \beta + \gamma$
     * le programme s'exécute en $\delta + 2 * T(2^{p-1})$
 
@@ -112,7 +113,8 @@ $T_{//}(n = 2^p) = p * \gamma + \beta = \Theta(log_2 n)$
 4. Tri par tas (heapSort)
 
 
-**TRI interne** (on ne travaille pas sur une copie du tableau) : `T[0:n]` est un tableau d'entiers
+**TRI interne** (on ne travaille pas sur une copie du tableau) : `T[0:n]` est un
+tableau d'entiers
 
 `T[0:n] = [t_0, t_1, ..., t_{n-1}]`
 
