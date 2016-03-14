@@ -4,17 +4,17 @@ author: Romain Gille
 date: 07/03/2016
 ...
 
-#Rappel du cours précédent : Recherche séquentielle
+# Rappel du cours précédent : Recherche séquentielle
 
-**Sortie :** `k` = indice de la première occurence de `e`
-  ou si $e !\in$ `T[0:n]`, $k = n$
+**Sortie :** `k` = indice de la première occurence de `e` ou si $e !\in$
+`T[0:n]`, $k = n$
 
 **Initialisation :** `k = 0`
 
-**Arrêt :** `k = n` ($e !\in$ `T[0:n]`) ou `T[k]` = `e` (`k` est la première 
-  occurence de `e`)
+**Arrêt :** `k = n` ($e !\in$ `T[0:n]`) ou `T[k]` = `e` (`k` est la
+première occurence de `e`)
 
-**Progression :** `I(k)` et  $k \neq n$ et `T[k]` $\neq e$  
+**Progression :** `I(k)` et $k \neq n$ et `T[k]` $\neq e$  
 $\Rightarrow$ `I(k+1)`
 
 ```java
@@ -28,17 +28,17 @@ int rS(int e, int[] T){
 }
 ```
 
-#Recherche Dichotomique
+# Recherche Dichotomique
 
 **Entrée :** `T` est strictement croissant
 
 **Sortie :** `T[i]`$\leq e <$ `T[i+1]`
 
-**3 cas particuliers :** 
+**3 cas particuliers :**
 
-* $e <$ `T[0]` $\rightarrow$ retourner $-1$
-* $e = $ `T[n-1]` $\rightarrow$ retourner $n - 1$
-* $e >$ `T[0]`$\leq e <$ `T[n-1]`
+-   $e <$ `T[0]` $\rightarrow$ retourner $-1$
+-   $e = $ `T[n-1]` $\rightarrow$ retourner $n - 1$
+-   $e >$ `T[0]`$\leq e <$ `T[n-1]`
 
 **Propriété :** `I(i, j)` `T[i]`$\leq e <$ `T[j]`
 
@@ -48,8 +48,8 @@ int rS(int e, int[] T){
 
 **Progression :** `I(i, j)` et $j \neq i + 1$ et ...
 
-* $T[\dfrac{i + j}{2}]\leq e \Rightarrow$ $I(\dfrac{i+j}{2}, j)$
-* $e <$ $T[\dfrac{i + j}{2}]$$\Rightarrow I(i, \dfrac{i+j}{2})$
+-   $T[\dfrac{i + j}{2}]\leq e \Rightarrow$ $I(\dfrac{i+j}{2}, j)$
+-   $e <$ $T[\dfrac{i + j}{2}]$$\Rightarrow I(i, \dfrac{i+j}{2})$
 
 ```java
 int rD(int e, int[] T){
@@ -67,54 +67,55 @@ int rD(int e, int[] T){
 }
 ```
 
-$n = 2^p$  
-**Exécution du corps de boucle**  
+$n = 2^p$\
+**Exécution du corps de boucle**\
 $j-i = 2^p, 2^{p-1}, ..., 2^1$
 
-p exécution ($\log_2 n$) d'un corps de boucle dont le temps d'exécution est en
-$\Theta(1)$ (majoré par une constante).  
+p exécution ($\log_2 n$) d'un corps de boucle dont le temps d'exécution
+est en $\Theta(1)$ (majoré par une constante).  
 Donc, $\Theta(\log n)$
 
 **Exemple :**  
-$n = 2^{20} \approx 10^6$   
+$n = 2^{20} \approx 10^6$  
 Recherche séquentielle : $10^6 \approx 2^{20}$  
 Recherche dichotomique : $20$  
 $\Rightarrow \text{ rapport : } \dfrac{10^6}{20} = 50 000$
 
+# Recherche arrière
 
-#Recherche arrière
+`T[0:m][0:n]`, tableau d'entiers les lignes et les colonnes sont dans
+l'ordre croissant.
 
-`T[0:m][0:n]`, tableau d'entiers les lignes et les colonnes sont dans l'ordre
-croissant.
-
-**Problème :** calculer le nombre d'occurences, x, de la valeur e dans 
+**Problème :** calculer le nombre d'occurences, x, de la valeur e dans
 `T[0:m][0:n]`
 
-*Solution 1 :*
-`m` Recherches séquentielles $\Rightarrow \Theta(m \times n)$
+*Solution 1 :* `m` Recherches séquentielles
+$\Rightarrow \Theta(m \times n)$
 
-*Solution 2 :*
-`m` Recherches dichotomiques $\Rightarrow \Theta(m \log n)$
+*Solution 2 :* `m` Recherches dichotomiques
+$\Rightarrow \Theta(m \log n)$
 
-*Solution 3 :*
-Recherche arrière $\Rightarrow \Theta(m + n)$
+*Solution 3 :* Recherche arrière $\Rightarrow \Theta(m + n)$
 
-##Résolution du problème avec la recherche arrière
+\newpage
+
+## Résolution du problème avec la recherche arrière
 
 `T[p:m][0:q+1]` est le sous-tableau "restant à traiter".  
 `e(p, q)` : nombre d'occurences dans `T[p:m][0:q+1]`
 
 Le nombre d'occurences de `e` dans `T[0:m][0:n]` est `e(0, n-1)`
 
-**Propriété :** $e(0, n-1) = x + e(p, q)$$\Rightarrow$ dépend de `I(x, p, q)`.
+**Propriété :** $e(0, n-1) = x + e(p, q)$$\Rightarrow$ dépend de
+`I(x, p, q)`.
 
-**Initialisation :** $x = 0, p = 0, q = n-1$
-**Arrêt :** $p = m ou q = -1$
-**Progression :**  `I(x, p, q)` et ($p \neq m \text{ et } q \neq -1$) et ...
+**Initialisation :** $x = 0, p = 0, q = n-1$ **Arrêt :**
+$p = m ou q = -1$ **Progression :** `I(x, p, q)` et
+($p \neq m \text{ et } q \neq -1$) et ...
 
-* $e = $`T[p][q]` $\Rightarrow$ `I(x+1, p+1, q-1)`
-* $e < $`T[p][q]` $\Rightarrow$ `I(x, p, q-1)`
-* $e > $`T[p][q]` $\Rightarrow$ `I(x, p+1, q)`
+-   $e = $`T[p][q]` $\Rightarrow$ `I(x+1, p+1, q-1)`
+-   $e < $`T[p][q]` $\Rightarrow$ `I(x, p, q-1)`
+-   $e > $`T[p][q]` $\Rightarrow$ `I(x, p+1, q)`
 
 ```java
 int rA(int e, int[] T){
