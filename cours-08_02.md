@@ -2,6 +2,7 @@
 title: Algorithmique -- écriture de programmes efficaces et sûrs
 author: Romain Gille
 date: 08/02/2016
+geometry: margin=1in
 ...
 
 #Rappel : Tri par sélection (TS)
@@ -19,10 +20,10 @@ $\Rightarrow$ `I(k + 1)`
 
 ##Notation :
 
-`arg min T[0:k]` est la première valeur d'indice, a, telle que `T[a]` = min 
-`T[0:k]` 
+`arg min T[0:k]` est la première valeur d'indice, a, telle que `T[a]` = min
+`T[0:k]`
 
-De façon générale, `arg min` $f(x)$ est la plus petite valeur, a, telle que 
+De façon générale, `arg min` $f(x)$ est la plus petite valeur, a, telle que
 
 $f(a) = min f(x)$
 
@@ -50,7 +51,7 @@ Propriété de `I(a, k')` : a = `arg min T[k:k']`
 
 **Condition d'arrêt :** k' = n
 
-**Progression :** 
+**Progression :**
 
 `I(a, k')` et k' $\neq$ n et `T[k']`$\geq$ `T[a]` $\Rightarrow$ `I( a, k' + 1)`
 
@@ -80,7 +81,7 @@ Le corps de boucle s'exécute en temps compté, $\beta$.
 Le corps de boucle est exécuté `n - k - 1` fois le test `kp != n` est en temps
 constant, $\gamma$. Il évalué `n - k` fois.
 
-**D'où** 
+**D'où**
 
 $T_{indiceMin}(k) = \alpha + (n-k-1)\beta + (n-k)\gamma$
 
@@ -126,7 +127,7 @@ void qS(int[] T, int i, int j){ // si j-i <= 1 : T[i:j] est déjà trié
   if(j - i > 1){
     int k = segmenter(T, i, j); // T[i:k] <= T[k] < T[k+1:j]
     qS(T, i, k); // T[i:k] <= T[k] < T[k+1:j] et T[i:k] croissant
-    qS(T, k + 1, j); // T[i:k] <= T[k] < T[k+1:j] 
+    qS(T, k + 1, j); // T[i:k] <= T[k] < T[k+1:j]
                      // et T[i:k] croissant et T[k+1:j] croissant
     // Donc T[i:j] croissant
   }

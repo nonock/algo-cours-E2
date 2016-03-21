@@ -2,6 +2,7 @@
 title: Algorithmique -- écriture de programmes efficaces et sûrs
 author: Romain Gille
 date: 14/03/2016
+geometry: margin=1in
 ...
 
 # Retour sur la multiplication séquentielle et dichotomique
@@ -45,7 +46,7 @@ while b1 != 0{
     b1 = b1 >> 1; // I(m, a1, b1)
   } else{ // I(m + a1, 2 a1, b1 / 2)
     m = m + a1;
-    a1 = a1 << 1; 
+    a1 = a1 << 1;
     b1 = b1 >> 1; // I(m, a1, b1)
   }
 } // I(m, a1, 0) donc m = ab

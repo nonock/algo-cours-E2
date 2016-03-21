@@ -2,6 +2,7 @@
 title: Algorithmique -- écriture de programmes efficaces et sûrs
 author: Romain Gille
 date: 15/02/2016
+geometry: margin=1in
 ...
 
 *On reprend les programmes précédents (QuickSort)*
@@ -25,7 +26,7 @@ void qS(int[] T, int i, int j){
 
 * $n =  2^p$ et $k = \dfrac{i+j}{2}$ à chaque appel
 
-$T(n = 2^p) = \Theta(n) + 2 * T(\dfrac{n}{2} = 2^{p-1})$ ($\Theta(n) = 
+$T(n = 2^p) = \Theta(n) + 2 * T(\dfrac{n}{2} = 2^{p-1})$ ($\Theta(n) =
 $temps `segmenter` + temps `j-i > 1`)
 
 $T(n \leq 2^p) = c = \text{constante}$
@@ -34,10 +35,10 @@ $T(n \leq 2^0) = c$
 
 $T(n = 2^1) = (\alpha 2^1 + \beta) + 2 T(2^0) = (\alpha 2^1 + \beta) + 2c$  
 
-$T(n = 2^2) = (\alpha 2^2 + \beta) + 2 T(2^1) = (\alpha 2^2 + \beta) + 
+$T(n = 2^2) = (\alpha 2^2 + \beta) + 2 T(2^1) = (\alpha 2^2 + \beta) +
   2((\alpha 2^1 + \beta) + 2c)$  
 
-$T(n = 2^3) = (\alpha 2^3 + \beta) + 2((\alpha 2^2 + \beta) + 2 ((\alpha 2^1 
+$T(n = 2^3) = (\alpha 2^3 + \beta) + 2((\alpha 2^2 + \beta) + 2 ((\alpha 2^1
   + \beta) + 2c))$  
 
 $T(n = 2^3) = \alpha 3 * 2^3 + \beta (2^0 + 2^1 + 2^2) + c 2^3$  
@@ -54,7 +55,7 @@ $T(n = 2^3) = \Theta(n \log(n))$
 
 * Si $n \neq 2^p \rightarrow 2^p < n < 2^{p+1}$  
   La forme du temps de calcul reste en $\Theta(n\log(n))$
-    
+
     * A chaque appel de `segmenter(T, i, j)`, si $k = i$  
       $\rightarrow$ `T[0:n]` est trié par ordre croissant.
 
@@ -76,8 +77,8 @@ $T(n \geq 2) = \alpha \sum^{n}_{i = 2} i + \beta(n - 1) + n C$
 
 $T(n \geq 2) = \alpha (\dfrac{n(n + 1)}{2} - 1) + \beta(n - 1) + n C$  
 
-$\dfrac{\alpha}{2} n^2 + (\beta + C)n - \beta = A n^2 + B n + C \rightarrow 
-  \Theta(n^2)$ 
+$\dfrac{\alpha}{2} n^2 + (\beta + C)n - \beta = A n^2 + B n + C \rightarrow
+  \Theta(n^2)$
 
 ```java
 void qSS(int[] T, int i, int j){ // QuickSort Stochastique (désordre)
@@ -117,16 +118,16 @@ void qSS(int[] T, int i, int j){ // QuickSort Stochastique (désordre)
 
 ## Équations de récurence de temps de calcul
 
-`sommeTab()` : $T(n) = 2 T(\dfrac{n}{2}) + \Theta(1) \Rightarrow \Theta(n)$ 
+`sommeTab()` : $T(n) = 2 T(\dfrac{n}{2}) + \Theta(1) \Rightarrow \Theta(n)$
 ($\Theta(1) \rightarrow \text{temps constant}$)
 
-`sommeTab()` en parallélisme : $T(n) = T(\dfrac{n}{2}) + \Theta(1) \Rightarrow 
+`sommeTab()` en parallélisme : $T(n) = T(\dfrac{n}{2}) + \Theta(1) \Rightarrow
 \Theta(\log(n))$
 
-bonne situation de `quickSort()` : $T(n) = T(\dfrac{n}{2}) + \Theta(n) 
+bonne situation de `quickSort()` : $T(n) = T(\dfrac{n}{2}) + \Theta(n)
 \Rightarrow \Theta(n \log(n))$
 
-mauvaise situation de `quickSort()` $T(n) = T(n - 1) + \Theta(n) \Rightarrow 
+mauvaise situation de `quickSort()` $T(n) = T(n - 1) + \Theta(n) \Rightarrow
 \Theta(n^2)$
 
 
@@ -139,7 +140,7 @@ mauvaise situation de `quickSort()` $T(n) = T(n - 1) + \Theta(n) \Rightarrow
 
 **Initialisation :** `k = 0`
 
-**Arrêt :** `k = n` ($x !\in$ `T[0:n]`) ou `T[k]` = x (k est la première 
+**Arrêt :** `k = n` ($x !\in$ `T[0:n]`) ou `T[k]` = x (k est la première
   occurence de x)
 
 **Progression :** `I(k)` et  $k \neq n$ et `T[k]` $\neq x$  

@@ -2,6 +2,7 @@
 title: Algorithmique -- écriture de programmes efficaces et sûrs
 author: Romain Gille
 date: 03/02/2016
+geometry: margin=1in
 ...
 
 **Invariant** : I(s, k) : $s = \sum\limits_{i \in [0:n]}$
@@ -67,7 +68,7 @@ On traite le cas `somme(T, 0, n)`
 * $T(n = 1) \rightarrow$ le programme s'éxecute en temps constant $\beta \neq
 \alpha$
 * $n > 1$ et $n = 2^p$ avec $p \geq 1$
-    * $\gamma$ est le temps constant de la division par 2 et du 
+    * $\gamma$ est le temps constant de la division par 2 et du
       `return sg + sd;`
     * $\delta = \alpha + \beta + \gamma$
     * le programme s'exécute en $\delta + 2 * T(2^{p-1})$

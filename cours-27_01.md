@@ -2,6 +2,7 @@
 title: Algorithmique -- écriture de programmes efficaces et sûrs
 author: Romain Gille
 date: 27/01/2016
+geometry: margin=1in
 ...
 
 # Exemple

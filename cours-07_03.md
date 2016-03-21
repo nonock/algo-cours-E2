@@ -2,6 +2,7 @@
 title: Algorithmique -- écriture de programmes efficaces et sûrs
 author: Romain Gille
 date: 07/03/2016
+geometry: margin=1in
 ...
 
 # Rappel du cours précédent : Recherche séquentielle
