@@ -110,7 +110,7 @@ $T[k] = T2[k2] \Rightarrow I(k + 1, k1, k2 + 1)$
       k1 ++;
     }
     while(k2 != n2){
-      T[k] = T1[k2];
+      T[k] = T2[k2];
       k ++;
       k2 ++;
     }
