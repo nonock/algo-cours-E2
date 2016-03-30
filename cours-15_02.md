@@ -26,8 +26,8 @@ void qS(int[] T, int i, int j){
 
 * $n =  2^p$ et $k = \dfrac{i+j}{2}$ à chaque appel
 
-$T(n = 2^p) = \Theta(n) + 2 * T(\dfrac{n}{2} = 2^{p-1})$ ($\Theta(n) =
-$temps `segmenter` + temps `j-i > 1`)
+$T(n = 2^p) = \Theta(n) + 2 * T(\dfrac{n}{2} = 2^{p-1})$ ($\Theta(n) =$
+temps `segmenter` + temps `j-i > 1`)
 
 $T(n \leq 2^p) = c = \text{constante}$
 
