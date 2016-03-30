@@ -6,3 +6,4 @@ pandoc cours-07_03.md -o cours-07_03.pdf
 pandoc cours-14_03.md -o cours-14_03.pdf
 pandoc cours-21_03.md -o cours-21_03.pdf
 pandoc cours-23_03.md -o cours-23_03.pdf
+pandoc cours-30_03.md	-o cours-30_03.pdf
