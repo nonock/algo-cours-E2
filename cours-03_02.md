@@ -1,5 +1,5 @@
 ---
-title: Algorithmique -- écriture de programmes efficaces et sûrs
+title: Algorithmique -- Introduction
 author: Romain Gille
 date: 03/02/2016
 geometry: margin=1in
@@ -39,8 +39,6 @@ $T(n) = \alpha + n \beta + (n + 1) \gamma$
 
 $T(n) = (\alpha + \gamma) + n (\beta + \gamma) = A + Bn$
 
-\newpage
-
 # Efficacité d'un programme
 
 C'est la forme du temps de calcul dans le pire cas d'éxécution exprimé en
@@ -73,6 +71,8 @@ On traite le cas `somme(T, 0, n)`
     * $\delta = \alpha + \beta + \gamma$
     * le programme s'exécute en $\delta + 2 * T(2^{p-1})$
 
+\newpage
+
 *On teste avec des valeurs de p*
 
 $T(n = 2^0) = \beta$
@@ -104,45 +104,3 @@ En posant le problème en parallèle :
 $T_{//}(n = 2^p) = p * \gamma + \beta = \Theta(log_2 n)$
 
 \newpage
-
-# Un premier problème de tri de tableau
-## Nous étudierons 4 algorithmes de tri
-
-1. Tri par sélection
-2. Tri "rapide" (quickSort) (ou tri par segmentation)
-3. Tri par fusion (mergeSort)
-4. Tri par tas (heapSort)
-
-
-**TRI interne** (on ne travaille pas sur une copie du tableau) : `T[0:n]` est un
-tableau d'entiers
-
-`T[0:n] = [t_0, t_1, ..., t_{n-1}]`
-
-Calculer une permutation croissante de (t_0, t_1, ..., t_{n-1})
-
-`I(k) : T[0:k]` croissant et `T[0:k]`$\leq$`T[k:n]`
-
-
-**Initialisation :** k = 0
-
-**Arrêt :** k = n
-
-**Progression :** `I(k)` et $k \neq n$ et $t_m = $ `min T[k:n]` et `T[k]`$= t_m$
-et `T[m]`$=t_k \rightarrow I(k+1)$
-
-**Programme :**
-
-```java
-void triSelection(int[] T){
-  int n = T.length;
-  int k = 0;
-  while(k != n){ // I(k) et k != n
-    int m = indiceMin(T, k, n);
-    int x = T[k];
-    T[k] = T[m];
-    T[m] = x; // I(k + 1)
-    k = k + 1; // I(k)
-  } // I(n) donc T[0:n] trié dans l'ordre croissant
-}
-```

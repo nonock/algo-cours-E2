@@ -1,9 +1,11 @@
 ---
-title: Algorithmique -- écriture de programmes efficaces et sûrs
+title: Algorithmique -- Complexité d'un programme
 author: Romain Gille
 date: 21/03/2016
 geometry: margin=1in
 ...
+
+\newpage
 
 # Retour sur le TP
 
@@ -14,9 +16,9 @@ Calcul en $\Theta(n_1 + n_2)$ de $E = E_1[0:n_1] \text{inter} E_2[0:n_2]$
 **Propriété :** $I(k, k_1, k_2)$
 $$E[0:k] \text{union} E_1[k_1:n_1] \text{inter} E_2[k_2:n_2] = E_1 \text{inter} E_2$$
 
-**Arrêt :** $k_1 = n_1 \text{ ou } k_2 = n_2$  
-`while(!(k1 == n1 || k2 == n2)) ...`  
-`while(k1 != n1 && k2 != n2) ...`  
+**Arrêt :** $k_1 = n_1 \text{ ou } k_2 = n_2$
+`while(!(k1 == n1 || k2 == n2)) ...`
+`while(k1 != n1 && k2 != n2) ...`
 
 ## Exercice 3
 
@@ -42,13 +44,15 @@ On cherche $a \times b$.
   }
 ```
 
+\newpage
+
 # Complexité d'un programme
 
 > Forme du temps de calcul, dans le pire cas, en fonction de la taille n du
   problème, pour de grandes valeurs de n.
 
-Une fonction $f$ est en $\Omega(g_1) \Rightarrow$ $f$ est minorée par $g_1$.  
-Une fonction $g_2$ est en $\Omega(f) \Rightarrow$ $g_2$ domine $f$.  
+Une fonction $f$ est en $\Omega(g_1) \Rightarrow$ $f$ est minorée par $g_1$.
+Une fonction $g_2$ est en $\Omega(f) \Rightarrow$ $g_2$ domine $f$.
 Si $g_1 = g_2 = g$, $f$ est en $\Theta (g)$.
 
 $f$ est en $\Omega(g_1)$ :
@@ -70,14 +74,16 @@ $$\Theta(1) \text{ (temps constant) } \rightarrow \Theta(\log{\log{n}})
 \rightarrow \Theta(n \log{n}) \rightarrow \Theta(n^2) \rightarrow \Theta(n^3)
 \rightarrow \Theta(2^n)$$
 
-* **Problèmes faciles :**  
+* **Problèmes faciles :**
   Un problème est dit facile s'il existe un algo polynomiale pour le résoudre.
 
-* **Problèmes difficiles :**  
+* **Problèmes difficiles :**
   On ne connaît pas d'algorithme polynomiale. Les algos sont en $\Omega(2^n)$.
 
-* **Problèmes $NP-$complets :**  
+* **Problèmes $NP-$complets :**
   Problèmes difficiles, équivalents pour cette propriété.
+
+\newpage
 
 # Optimalité des algorithmes de tri comparatifs en $O(n log(n))$
 
@@ -85,15 +91,15 @@ $$\Theta(1) \text{ (temps constant) } \rightarrow \Theta(\log{\log{n}})
 
 Le nombre de comparaisons $T[x] \leq T[y] ?$
 
-* Soient n valeurs à trier.  
-  Il existe $ n!$ permutations de ces valeurs.  
-  **Remarques :** le nombre d'exécutions possibles du programme est $\geq n!$.  
+* Soient n valeurs à trier.
+  Il existe $ n!$ permutations de ces valeurs.
+  **Remarques :** le nombre d'exécutions possibles du programme est $\geq n!$.
   Par l'absurde... Sinon il existe deux permutations différentes, conduisant à
-  la même exécution du programme.  
+  la même exécution du programme.
   $\Rightarrow$ au moins l'une des deux ne sera pas triée.
 
-* Soit $p$ le nombre de comparaisons du pire cas d'exécution du programme.  
-  Alors $2^p$ majore le nombre d'exécution du programme.  
+* Soit $p$ le nombre de comparaisons du pire cas d'exécution du programme.
+  Alors $2^p$ majore le nombre d'exécution du programme.
   $$n! \leq 2^p$$
   $$n! = n . (n-1) . (n-2) . ... . ({n \over 2}) . ... . 1$$
   $$({n \over 2})^{n \over 2} \leq n . (n-1) . (n-2) . ... ({n \over 2}) \leq n!$$

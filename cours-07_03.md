@@ -1,33 +1,11 @@
 ---
-title: Algorithmique -- écriture de programmes efficaces et sûrs
+title: Algorithmique -- Recherches
 author: Romain Gille
 date: 07/03/2016
 geometry: margin=1in
 ...
 
-# Rappel du cours précédent : Recherche séquentielle
-
-**Sortie :** `k` = indice de la première occurence de `e` ou si $e !\in$
-`T[0:n]`, $k = n$
-
-**Initialisation :** `k = 0`
-
-**Arrêt :** `k = n` ($e !\in$ `T[0:n]`) ou `T[k]` = `e` (`k` est la
-première occurence de `e`)
-
-**Progression :** `I(k)` et $k \neq n$ et `T[k]` $\neq e$  
-$\Rightarrow$ `I(k+1)`
-
-```java
-int rS(int e, int[] T){
-  int n = T.length;
-  k = 0; //I(k)
-  while(k != n && T[k] != e){ // I(k+1)
-    k++; //I(k)
-  } // I(k) et k = n ou e = T[k]
-  return k;
-}
-```
+\newpage
 
 # Recherche Dichotomique
 
@@ -38,7 +16,7 @@ int rS(int e, int[] T){
 **3 cas particuliers :**
 
 -   $e <$ `T[0]` $\rightarrow$ retourner $-1$
--   $e = $ `T[n-1]` $\rightarrow$ retourner $n - 1$
+-   $e =$ `T[n-1]` $\rightarrow$ retourner $n - 1$
 -   $e >$ `T[0]`$\leq e <$ `T[n-1]`
 
 **Propriété :** `I(i, j)` `T[i]`$\leq e <$ `T[j]`
@@ -73,14 +51,16 @@ $n = 2^p$\
 $j-i = 2^p, 2^{p-1}, ..., 2^1$
 
 p exécution ($\log_2 n$) d'un corps de boucle dont le temps d'exécution
-est en $\Theta(1)$ (majoré par une constante).  
+est en $\Theta(1)$ (majoré par une constante).
 Donc, $\Theta(\log n)$
 
-**Exemple :**  
-$n = 2^{20} \approx 10^6$  
-Recherche séquentielle : $10^6 \approx 2^{20}$  
-Recherche dichotomique : $20$  
+**Exemple :**
+$n = 2^{20} \approx 10^6$
+Recherche séquentielle : $10^6 \approx 2^{20}$
+Recherche dichotomique : $20$
 $\Rightarrow \text{ rapport : } \dfrac{10^6}{20} = 50 000$
+
+\newpage
 
 # Recherche arrière
 
@@ -98,11 +78,10 @@ $\Rightarrow \Theta(m \log n)$
 
 *Solution 3 :* Recherche arrière $\Rightarrow \Theta(m + n)$
 
-\newpage
 
 ## Résolution du problème avec la recherche arrière
 
-`T[p:m][0:q+1]` est le sous-tableau "restant à traiter".  
+`T[p:m][0:q+1]` est le sous-tableau "restant à traiter".
 `e(p, q)` : nombre d'occurences dans `T[p:m][0:q+1]`
 
 Le nombre d'occurences de `e` dans `T[0:m][0:n]` est `e(0, n-1)`

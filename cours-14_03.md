@@ -1,9 +1,11 @@
 ---
-title: Algorithmique -- écriture de programmes efficaces et sûrs
+title: Algorithmique -- Multiplications et Fibonaci
 author: Romain Gille
 date: 14/03/2016
 geometry: margin=1in
 ...
+
+\newpage
 
 # Retour sur la multiplication séquentielle et dichotomique
 
@@ -35,7 +37,7 @@ while b1 != 0{ // I(m, b1), b1 != 0 => I(m + a, b1 - 1)
 **Arrêt :** `b1 = 0`
 
 **Progression :** `I(m, a1, b1)` et `b1` pair $\Rightarrow$
-`I(m, 2a1, b1/2)`  
+`I(m, 2a1, b1/2)`
 `I(m, a1, b1)` et `b1` impair $\Rightarrow$ `I(m + a1, 2a1, b1/2)`
 
 ```java
@@ -56,7 +58,7 @@ while b1 != 0{
 
 # Retour sur Fibonaci
 
-`I(d, e, k)` : `d = fibo(k-2)` et `e = fibo(k-1)` pour `k` $\geq$ `2`  
+`I(d, e, k)` : `d = fibo(k-2)` et `e = fibo(k-1)` pour `k` $\geq$ `2`
 `I(d, e, k)` et `k != n` $\Rightarrow$ `I(e, d + e, k + 1)`
 
 ```java
@@ -73,28 +75,3 @@ int fibo(int n){
   return d + e;
 }
 ```
-
-# Système formel C.A.R HOARE
-
-Si l'entrée E du programme est vérifiée, après le programme P, la sortie S du
-programme est vérifiée. ($E P S$)
-
-## Axiomes de l'affectation
-
-**`E(..., exp, ...)` $\rightarrow$ `x = exp` $\rightarrow$ `E(..., x, ...)`**  
-`(2(x + 1) + 3)(x + 1) >` $y^{x+1}$ $\rightarrow$ `x = x + 1` $\rightarrow$ `(2x + 3)x >` $y^{x}$
-
-### Règles
-
-* Règle du ';'  
-  $E P_1 ; P_2 S \Rightarrow E P_1 X , X P_2 S$  
-* Règle du 'si sinon'  
-  $E \text{ if } B P_1; \text{ else } P_2 S \Rightarrow E \text{ et } B P_1 S, E \text{ et } \overline{B} P_2 S$  
-* Règle du 'si'  
-  $E \text{ if } B P S \Rightarrow E \text{ et } B P S, E et \overline{B} \rightarrow S$  
-* Règle des '{}'  
-  $E\{P_1;P_2\}S \Rightarrow E P_1 ; P_2 S$  
-* Règle du 'while'  
-  $E \text{ while } B P S \rightarrow S = E \text{ et } \overline{B} \Rightarrow E \text{ et } B P E$  
-* Règle du 'for'  
-  $E \text{ for(Init; Condition; Incrémentation) } P S \Rightarrow ?$

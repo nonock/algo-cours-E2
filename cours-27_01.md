@@ -1,13 +1,15 @@
 ---
-title: Algorithmique -- écriture de programmes efficaces et sûrs
+title: Algorithmique -- Introduction
 author: Romain Gille
 date: 27/01/2016
 geometry: margin=1in
 ...
 
+\newpage
+
 # Exemple
 
-`T[0:n]` est un tableau d'entiers à n valeurs.  
+`T[0:n]` est un tableau d'entiers à n valeurs.
 Calculer dans `s`, la somme des éléments de `T`.
 
 ```java

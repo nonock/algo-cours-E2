@@ -1,9 +1,11 @@
 ---
-title: Algorithmique -- écriture de programmes efficaces et sûrs
+title: Algorithmique -- Tri par tas
 author: Romain Gille
 date: 23/03/2016
 geometry: margin=1in
 ...
+
+\newpage
 
 # Tri par tas ($\Theta(n \log n)$)
 
@@ -12,11 +14,11 @@ geometry: margin=1in
 > Un tas est un arbre binaire presque parfait, dont tous les sommets sont
   dominants.
 
-*arbre binaire :* chaque n\oe ud a deux descendants.  
+*arbre binaire :* chaque n\oe ud a deux descendants.
 *presque parfait :* parfait jusqu'à l'avant dernier niveau et le dernier
-  niveau entièrement à gauche, sans trous.  
-*parfait :* chaque ligne a $2^p$ valeurs.  
-*sommets :* n\oe uds de l'arbre (indicés de haut en bas et de gauche à droite).  
+  niveau entièrement à gauche, sans trous.
+*parfait :* chaque ligne a $2^p$ valeurs.
+*sommets :* n\oe uds de l'arbre (indicés de haut en bas et de gauche à droite).
 *dominants :* chaque indice est supérieur ou égal à chacun de ses descendants.
 
 **Remarque :** $T[0]$ est la valeur max du tas.
@@ -37,8 +39,8 @@ Cas particulier, $a(0) = 0$
 
 ### Degré ($0, 1 \text{ ou } 2$)
 
-$\text{deg}(i) = \text{ si } g(i) > n - 1, \text{ alors } 0$  
-$\text{sinon, si } g(i) = n - 1, \text{ alors } 1$  
+$\text{deg}(i) = \text{ si } g(i) > n - 1, \text{ alors } 0$
+$\text{sinon, si } g(i) = n - 1, \text{ alors } 1$
 $\text{sinon } 2$
 
 ```java
@@ -51,7 +53,7 @@ int deg(int i, int n){
 
 ### Dominance
 
-$\text{deg}(i) = 0 \text{ ou } \text{deg}(i) = 1 \text{ et } T[i] \geq T[g(i)]$  
+$\text{deg}(i) = 0 \text{ ou } \text{deg}(i) = 1 \text{ et } T[i] \geq T[g(i)]$
 ou $\deg(i) = 2 \text{ et } T[i] \geq T[g(i)] \text{ et } T[i] \geq T[d(i)]$
 
 ```java
@@ -68,10 +70,10 @@ boolean domine(int[] T, int i){
 
 $$I(k) : T[0:k] \text{ croissant et } T[0:k] \leq T[k:n]$$
 
-**Init :** $k = 0$  
-**Arrêt :** $k = n (\text{ ou } k = n - 1)$  
+**Init :** $k = 0$
+**Arrêt :** $k = n (\text{ ou } k = n - 1)$
 **Progression :** $I(k)$ et $k \neq n$ et $m =$ minimum de $T[k:n]$ et
-  permutées($T[m], T[k]$) $\Rightarrow I(k + 1)$  
+  permutées($T[m], T[k]$) $\Rightarrow I(k + 1)$
 **Complexité :** $\Theta(n^2)$
 
 ## Tri par tas
@@ -79,8 +81,8 @@ $$I(k) : T[0:k] \text{ croissant et } T[0:k] \leq T[k:n]$$
 $$I(k) : T[k:n] \text{ croissant et } T[0:k] \leq T[k:n] \text{ et } T[0:k]
   \text{ est un tas}$$
 
-**Init :** $k = n$ et $T[0:n]$ est un tas  
-**Arrêt :** $k = 0$ ou $k = 1$  
+**Init :** $k = n$ et $T[0:n]$ est un tas
+**Arrêt :** $k = 0$ ou $k = 1$
 **Progression :** $I(k)$ et $k \neq 0$ et permutées($T[k - 1], T[0]$)
 $\rightarrow I(k - 1)$ et $T[0:k - 1]$ est un tas.
 
@@ -98,21 +100,23 @@ void heapSort(int[] T){
 ```
 **Complexité :** Le corps de boucle est en $\Theta(\log k) = O(\log n)$
 (majoration). On le répète $n$ fois donc le temps de calcul est
-majoré par $O(n \log n)$.  
+majoré par $O(n \log n)$.
 De plus, *heapsort* est en $\Omega(n \log n)$ (minoration) car c'est un
 tris comparatifs. Donc *heapsort* est en $\Theta(n \log n)$.
+
+\newpage
 
 ### Retablir Tas
 
 **Entrée :** le $k$-préfixe est "presque un tas" : $i \in [0:k] \\ {0}
-\Rightarrow \text{ dominant}(i)$.  
+\Rightarrow \text{ dominant}(i)$.
 **Sortie :** $i \in [0:k] \Rightarrow \text{ dominant}(i)$, donc $T[0:k]$
 est un tas.
 
 $$I(j) : i \in [O:k] \\ {j} \Rightarrow \text{ dominant}(i)$$
 
-**Init :** $j = 0$  
-**Arrêt :** $\text{dominant}(j)$  
+**Init :** $j = 0$
+**Arrêt :** $\text{dominant}(j)$
 
 ```java
 void retablirTas(int[] T, int k){
@@ -129,7 +133,7 @@ void retablirTas(int[] T, int k){
       } // I(j)
       else{
         permut(T, j, d(j));
-        j = d(j); 
+        j = d(j);
       } // I(j)
     }
   }
