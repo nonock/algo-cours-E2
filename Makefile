@@ -8,4 +8,5 @@ pandoc cours-21_03.md -o courspdf/complexite_d_un_programme.pdf
 pandoc cours-23_03.md cours-30_03.md -o courspdf/tris/heapsort.pdf
 pandoc cours-30_03-2.md -o courspdf/tris/mergesort.pdf
 pandoc cours-06_04.md -o courspdf/recherche/pieme_valeur_d_un_tableau.pdf
-pandoc cours-06_04-2.md -o courspdf/programmation-dynamique/introduction.pdf
+pandoc cours-06_04-2.md cours-13_04.md cours-02_05.md -o courspdf/programmation-dynamique/introduction.pdf
+pandoc cours-02_05-02.md -o courspdf/programmation-dynamique/structures_donnees.pdf
