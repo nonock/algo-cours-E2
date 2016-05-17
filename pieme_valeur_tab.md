@@ -14,7 +14,7 @@ geometry: margin=1in
 
 Solution en $\Theta(n\log{n})$
 
-Il faut être capable de calculer la valeur médianne : $p = \dfrac{n}{2}$.
+Il faut être capable de calculer la valeur médiane : $p = \dfrac{n}{2}$.
 
 On a $T[0:k_1] < T[k_1:k_2] < T[k_2:n]$ et $T[k_1] = T[k_1+1] = ... = T[k_2-1]$
 

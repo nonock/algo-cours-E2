@@ -11,7 +11,7 @@ geometry: margin=1in
 
 * Tri optimal (non stochastique) : $\Theta(n \log n)$
 * Copie du tableau (ne trie pas "sur place")
-* Approche "Diviser pour regner" (idem QuickSort)
+* Approche "Diviser pour régner" (idem QuickSort)
 
 ```java
   void mergeSort(int[] T){

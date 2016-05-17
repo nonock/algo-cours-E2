@@ -1,9 +1,38 @@
 ---
-title: Algorithmique -- écriture de programmes efficaces et sûrs
+title: Algorithmique -- Tri par segmentation
 author: Romain Gille
-date: 15/02/2016
+date: 08/02/2016
 geometry: margin=1in
 ...
+
+\newpage
+
+# Tri par segmentation (CA Hoare)
+
+## Trier `T[i:j]`
+
+1. "Installer" `T[i:k]` $\leq$ `T[k]` $<$ `T[K+1:j]`
+
+2. Si `T[i:k]` est trié et `T[k + 1, j]` est trié. Alors `T[i:j]` est trié
+
+```java
+void quickSort(int[] T){
+  int m = T.length;
+  qS(T, 0, n);
+}
+
+void qS(int[] T, int i, int j){ // si j-i <= 1 : T[i:j] est déjà trié
+  if(j - i > 1){
+    int k = segmenter(T, i, j); // T[i:k] <= T[k] < T[k+1:j]
+    qS(T, i, k); // T[i:k] <= T[k] < T[k+1:j] et T[i:k] croissant
+    qS(T, k + 1, j); // T[i:k] <= T[k] < T[k+1:j]
+                     // et T[i:k] croissant et T[k+1:j] croissant
+    // Donc T[i:j] croissant
+  }
+}
+```
+
+**"DIVISER POUR REGNER"**
 
 \newpage
 
@@ -97,7 +126,7 @@ void qSS(int[] T, int i, int j){ // QuickSort Stochastique (désordre)
 * `sommeTab()` en découpant `T` en deux sous-tableaux
 * `quickSort()`
 
-## Équations de récurence de temps de calcul
+## Équations de récurrence de temps de calcul
 
 `sommeTab()` : $T(n) = 2 T(\dfrac{n}{2}) + \Theta(1) \Rightarrow \Theta(n)$
 ($\Theta(1) \rightarrow \text{temps constant}$)

@@ -1,9 +1,37 @@
 ---
 title: Algorithmique -- Recherches
 author: Romain Gille
-date: 07/03/2016
+date: 15/02/2016
 geometry: margin=1in
 ...
+
+\newpage
+
+# Recherche d'une valeur dans `T[0:n]`
+
+## Recherche séquentielle
+
+**Sortie :** `k` = indice de la première occurrence de `x`
+  ou si $x !\in$ `T[0:n]`, $k = n$
+
+**Initialisation :** `k = 0`
+
+**Arrêt :** `k = n` ($x !\in$ `T[0:n]`) ou `T[k]` = x (k est la première
+  occurence de x)
+
+**Progression :** `I(k)` et  $k \neq n$ et `T[k]` $\neq x$
+$\Rightarrow$ `I(k+1)`
+
+```java
+int rS(int x, int[] T){
+  int n = T.length;
+  k = 0; //I(k)
+  while(k != n && T[k] != x){ // I(k+1)
+    k++; //I(k)
+  }
+  return k;
+}
+```
 
 \newpage
 
@@ -67,7 +95,7 @@ $\Rightarrow \text{ rapport : } \dfrac{10^6}{20} = 50 000$
 `T[0:m][0:n]`, tableau d'entiers les lignes et les colonnes sont dans
 l'ordre croissant.
 
-**Problème :** calculer le nombre d'occurences, x, de la valeur e dans
+**Problème :** calculer le nombre d'occurrences, x, de la valeur e dans
 `T[0:m][0:n]`
 
 *Solution 1 :* `m` Recherches séquentielles
@@ -82,9 +110,9 @@ $\Rightarrow \Theta(m \log n)$
 ## Résolution du problème avec la recherche arrière
 
 `T[p:m][0:q+1]` est le sous-tableau "restant à traiter".
-`e(p, q)` : nombre d'occurences dans `T[p:m][0:q+1]`
+`e(p, q)` : nombre d'occurrences dans `T[p:m][0:q+1]`
 
-Le nombre d'occurences de `e` dans `T[0:m][0:n]` est `e(0, n-1)`
+Le nombre d'occurrences de `e` dans `T[0:m][0:n]` est `e(0, n-1)`
 
 **Propriété :** $e(0, n-1) = x + e(p, q)$$\Rightarrow$ dépend de
 `I(x, p, q)`.
