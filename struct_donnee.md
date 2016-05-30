@@ -301,6 +301,8 @@ $$\text{min }_{y \in Y} f(y) + c = (\text{min }_{y \in Y} f(y)) + c$$
 
 Avec $c$ une constante.
 
+\newpage
+
 ### Pour résumer
 
 **Base** : $t = 0$, $m(i, i) = 0$, $\forall i$ : $0 \leq i \leq n$
@@ -349,6 +351,8 @@ ArbreBinaire abro(int[][] M, int[] V, int i, int j){
                             );
 }
 ```
+
+\newpage
 
 # Calcul d'une plus longue séquence commune à deux séquences
 
@@ -421,11 +425,12 @@ int[][] calculerL(String X, String Y){
     for(int q = 0; q <= n; q++) L[q][0] = 0;
     // Cas général
     for(int p = 1; p <= m; p++)
-        for(int q = 1; q <= n; q++)
+        for(int q = 1; q <= n; q++){
             if(X.charAt(p-1) == Y.charAt(q-1))
                 L[p][q] = 1 + L[p-1][q-1];
             else
                 L[p][q] = Math.max(L[p][q-1], L[p-1][q]);
+        }
     return L;
 }
 ```
@@ -447,6 +452,9 @@ void afficherPlsc(int[][] L, String X, String Y, int p, int q){
         }
 }
 ```
+
+
+\newpage
 
 ## Version itérative
 
@@ -485,3 +493,108 @@ String construirePlsc(int[][] L, String X, String Y){
 ```
 
 Construction en $\Theta(m + n)$
+
+# Fret de coût minimum
+
+$X = {0, ..., n-1} n\text{ villes}$
+$\forall i, j, i < j,$ il existe un trajet direct $i \rightarrow j$
+Les coûts directs sont publiés :
+$\forall i, j,$ $0 \leq i < j < n,$ coût direct $c(i, j)$
+La matrice $C$ telle que $C[i][j] = c(i, j)$
+
+**Notation :** $m(k)$ est le coût minimum d'un affrètement de la ville 0 à la
+ville $k$.
+
+Nous cherchons à calculer $m(n-1)$.
+
+## Équation de récurrence du coût minimum $m(k)$
+
+**Hypothèse :** le problème est résolu
+
+Possibilités :
+
+    * $m(n-1) = m(n-2) + c(n-2, n-1)$
+    * $m(n-1) = m(n-3) + c(n-3, n-1)$
+    * ...
+* $m(k) + c(k, n-1)$
+* $m(n-1) = c(0, n-1)$
+
+**Équation de récurrence :**
+
+1. Chemin direct
+    $m(n-1) = c(0, n-1$
+
+2. Chemin non direct
+    $m(n-1) = min{m(k) + c(k, n-1)}$
+
+
+On a donc :
+
+$m(n-1) = min{c(0, n-1), min{m(k) + c(k, n-1)}}$
+
+Finalement :
+
+**Base de la récurrence :** $m(1) = c(0, 1)$
+
+**Cas général :** $2 \leq k < n$
+$m(k) = min{c(0, k), min{m(k') + c(k', k)}}$ avec $1 \leq k' < k$
+
+**Programme :**
+
+On calcule, par taille de problème croissant, un vecteur $M[0:n]$ de terme
+général $M[k] = m(k)$ et un vecteur $A[0:n]$ de terme général
+$A[k] = arg{m(k)} = a(k)$. C'est à dire $a(k)$ est la dernière étape sur le
+chemin de coût minimum allant de $0$ jusqu'à $k$.
+Par convention, on pose $a(k) = -1$ si le chemin est direct.
+
+```java
+int[][] calculerMetA(int[][] C){
+    int n = C.length;
+    int[] M = new int[n], A = new int[n];
+    M[1] = C[0][1];
+    A[1] = -1;
+    for(int k = 2; k < n; k++){
+        M[k] = C[0][k];
+        A[k] = -1;
+        for(int kp = 1; kp < k; kp ++){
+            int mkp = M[kp] + C[kp][k];
+            if(mkp < M[k]){
+                M[k] = mkp;
+                A[k] = kp;
+            }
+        }
+    }
+    int[][] MA = {M, A};
+    return MA;
+}
+```
+
+**Complexité :** $\Theta(n^2)$
+
+## Affichage d'un chemin de coût minimum
+
+```java
+void accm(int[] A, int k){
+    if(A[k] == -1) System.out.println(0);
+    else{
+        System.out.print(A[k] + "<-");
+        accm(A, A[k]);
+    }
+}
+
+void accm(int[] A){
+    int n = A.length;
+    System.out.print(n-1 + "<-");
+    accm(A, n-1);
+}
+```
+
+## Autre équation de récurrence
+
+$m(i, j)$ est le coût minimum pour aller de $i$ en $j$, avec $i \leq j$.
+
+**Base :** $m(i, i) = 0$
+
+**Cas général :** $0 \leq i < j < n$
+$m(i, j) = min{m(i, k) + m(k, j)}
+
